@@ -1,11 +1,6 @@
-import { Welcome } from '../components/Welcome/Welcome';
-import { ColorSchemeToggle } from '../components/ColorSchemeToggle/ColorSchemeToggle';
+import { StepperForm } from '@/components/StepperForm/StepperForm';
+import { SchemeToggle } from '../components';
 
 export default function HomePage() {
-  return (
-    <>
-      <Welcome />
-      <ColorSchemeToggle />
-    </>
-  );
+  return <StepperForm />;
 }
