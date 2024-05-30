@@ -1,4 +1,4 @@
-import { Stack } from '@mantine/core';
+import { Stack, Text } from '@mantine/core';
 import { useFormContext, WatchObserver } from 'react-hook-form';
 import { StepperFormData } from '../../types';
 import { useEffect, useState } from 'react';
@@ -25,6 +25,11 @@ export const Product = () => {
   return (
     <Stack my="lg" p="xl" align="center">
       <Dropzone name={'productPicture'} />
+      <Text>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec semper pharetra est vitae
+        tincidunt. Aliquam commodo, tellus eget vehicula aliquam, neque augue laoreet tellus, quis
+        aliquam lectus nibh dignissim quam.
+      </Text>
     </Stack>
   );
 };
