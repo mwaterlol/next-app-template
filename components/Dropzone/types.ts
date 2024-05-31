@@ -1,6 +1,3 @@
-import { WatchObserver } from 'react-hook-form';
-import { StepperFormData } from '../StepperForm/types';
-
-export type DropzoneProps = {
+export type DropzoneProps<T> = {
   name: 'productPicture' | 'backgroundPicture';
 };

@@ -1,10 +1,10 @@
 'use client';
 import { useFormContext } from 'react-hook-form';
-import { StepperFormData } from '../../types';
+import { StepperFormData } from '../../Stepper/types';
 import { Flex, rem, Slider, Stack, Text, Tooltip } from '@mantine/core';
 import { CircleHelp } from 'lucide-react';
 
-export const Parameters = () => {
+export const ParametersForm = () => {
   const { watch, register, control, setValue } = useFormContext<StepperFormData>();
   return (
     <Stack mt="xl">

@@ -1,3 +1,4 @@
+'use client';
 import {
   Box,
   Button,
@@ -15,10 +16,10 @@ import { useState } from 'react';
 import { TabsVariants } from './types';
 import { templatesList } from './utils';
 import { useFormContext } from 'react-hook-form';
-import { StepperFormData } from '../../types';
+import { StepperFormData } from '../../Stepper/types';
 import { Dropzone } from '@/components/Dropzone';
 
-export const Background = () => {
+export const BackgroundForm = () => {
   const { setValue, watch, control, register } = useFormContext<StepperFormData>();
   const styleTemplate = watch('styleTemplate');
   const [activeTab, setActiveTab] = useState<TabsVariants | null>('template');

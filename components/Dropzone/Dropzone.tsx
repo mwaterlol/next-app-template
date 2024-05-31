@@ -1,27 +1,28 @@
+'use client';
+
 import { Group, rem, Button, Image, Text } from '@mantine/core';
 import { Upload, X, ImageIcon } from 'lucide-react';
 import { Controller, useFormContext } from 'react-hook-form';
-import { DropzoneProps } from './types';
-import { useState, useEffect } from 'react';
-import { StepperFormData } from '../StepperForm/types';
 import { Dropzone as MantineDropzone } from '@mantine/dropzone';
+import { useState, useEffect } from 'react';
+import { DropzoneProps } from './types';
 
-export const Dropzone = ({ name }: DropzoneProps) => {
-  const { watch, register, control, setValue } = useFormContext<StepperFormData>();
+export const Dropzone = <T,>({ name }: DropzoneProps<T>) => {
+  const { watch, control, setValue, formState, clearErrors } = useFormContext<T>();
+  // const error = formData.
   const uploadedFile = watch(name);
   const [imageUrl, setImageUrl] = useState<string | null>(null);
-
+  // eslint-disable-next-line consistent-return
   useEffect(() => {
     //@ts-ignore
     if (uploadedFile && uploadedFile?.[0]) {
       //@ts-ignore
       const url = URL.createObjectURL(uploadedFile[0]);
       setImageUrl(url);
-
+      clearErrors([name]);
       return () => URL.revokeObjectURL(url);
-    } else {
-      setImageUrl(null);
     }
+    setImageUrl(null);
   }, [uploadedFile]);
   return (
     <Controller
@@ -87,6 +88,11 @@ export const Dropzone = ({ name }: DropzoneProps) => {
               )}
             </Group>
           </MantineDropzone>
+          {formState?.errors[name] && (
+            <Text size="xs" color="red">
+              {formState?.errors[name].message}
+            </Text>
+          )}
           {imageUrl && (
             //@ts-ignore
             <Button color="red" onClick={() => setValue(name, [])} variant="outline">
